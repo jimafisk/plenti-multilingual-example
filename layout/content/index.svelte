@@ -5,7 +5,7 @@
 <h1>{title}</h1>
 
 <style>
-	h1 {
+	:global(*) {
 		font-family: Helvetica, sans-serif;
 	}
 </style>
