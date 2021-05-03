@@ -1,9 +1,12 @@
 <script>
   export let allContent, content;
 
+	import { onMount } from 'svelte/internal';
   let lang = "en"; // set default language
+	onMount(() => lang = window.location.pathname.split("/")[2]);
+//console.log(lang);
 
-  $: urlPrefix = content.path.split('/')[1] + "/";
+  $: urlPrefix = content.path.split('/')[0] + "/";
   $: urlSuffix = content.filename == "index.json" ? "" : "/" + content.path.substring(content.path.lastIndexOf('/') + 1);
 </script>
 
@@ -11,8 +14,8 @@
   
   <span id="page-links">
   {#each allContent as page}
-    {#if page.path.startsWith('/pages/'+lang) && page.filename == 'index.json'}
-      <a href="{page.path}">Home</a>
+    {#if page.path.startsWith('pages/'+lang) && page.filename == 'index.json'}
+      <a href="/{page.path}">Home</a>
     {/if}
   {/each}
   </span>
@@ -25,8 +28,8 @@
 
   <span id="page-links">
   {#each allContent as page}
-    {#if page.path.startsWith('/pages/'+lang) && page.filename != 'index.json'}
-      <a href="{page.path}">{page.fields.title}</a>
+    {#if page.path.startsWith('pages/'+lang) && page.filename != 'index.json'}
+      <a href="/{page.path}">{page.fields.title}</a>
     {/if}
   {/each}
   </span>
