@@ -1,10 +1,7 @@
 <script>
   export let allContent, content;
 
-	import { onMount } from 'svelte/internal';
-  let lang = "en"; // set default language
-	onMount(() => lang = window.location.pathname.split("/")[2]);
-//console.log(lang);
+  let lang = content.path.split('/')[1]; // set default language
 
   $: urlPrefix = content.path.split('/')[0] + "/";
   $: urlSuffix = content.filename == "index.json" ? "" : "/" + content.path.substring(content.path.lastIndexOf('/') + 1);
