@@ -4,14 +4,14 @@
   let lang = content.path.split('/')[1]; // set default language
 
   $: urlPrefix = content.path.split('/')[0] + "/";
-  $: urlSuffix = content.filename == "index.json" ? "" : "/" + content.path.substring(content.path.lastIndexOf('/') + 1);
+  $: urlSuffix = content.filename == "_index.json" ? "" : "/" + content.path.substring(content.path.lastIndexOf('/') + 1);
 </script>
 
 <nav>
   
   <span id="page-links">
   {#each allContent as page}
-    {#if page.path.startsWith('pages/'+lang) && page.filename == 'index.json'}
+    {#if page.path.startsWith('pages/'+lang) && page.filename == '_index.json'}
       <a href="/{page.path}">Home</a>
     {/if}
   {/each}
@@ -25,7 +25,7 @@
 
   <span id="page-links">
   {#each allContent as page}
-    {#if page.path.startsWith('pages/'+lang) && page.filename != 'index.json'}
+    {#if page.path.startsWith('pages/'+lang) && page.filename != '_index.json'}
       <a href="/{page.path}">{page.fields.title}</a>
     {/if}
   {/each}

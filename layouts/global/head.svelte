@@ -8,7 +8,7 @@
 
   <title>{ title }</title>
 
-  <script type="module" src="/spa/ejected/main.js"></script>
-  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg">
+  <script type="module" src="/spa/core/main.js"></script>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel='stylesheet' href='/spa/bundle.css'>
 </head>
