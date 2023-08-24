@@ -1,5 +1,5 @@
 <script>
-  export let allContent, content;
+  export let allContent, content, user;
 
   let lang = content.path.split('/')[1]; // set default language
 
@@ -12,7 +12,7 @@
   <span id="page-links">
   {#each allContent as page}
     {#if page.path.startsWith('pages/'+lang) && page.filename == '_index.json'}
-      <a href="/{page.path}">Home</a>
+      <a href="/{page.path}">{lang == 'en' ? 'Home' : 'Maison'}</a>
     {/if}
   {/each}
   </span>
@@ -29,6 +29,14 @@
       <a href="/{page.path}">{page.fields.title}</a>
     {/if}
   {/each}
+  {#if user && $user.isAuthenticated}
+    <button on:click|preventDefault={$user.logout()}>{lang == 'en' ? 'Logout' : 'Se déconnecter'}</button>
+  {:else}
+    <button on:click|preventDefault={$user.login()}>{lang == 'en' ? 'Login' : 'Se connecter'}</button>
+  {/if}
+  </span>
+
+  <span id="auth">
   </span>
 
 </nav>
