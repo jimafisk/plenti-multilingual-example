@@ -36,9 +36,6 @@
   {/if}
   </span>
 
-  <span id="auth">
-  </span>
-
 </nav>
 
 <style>
